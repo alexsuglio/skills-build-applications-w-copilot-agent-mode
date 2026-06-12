@@ -1,4 +1,5 @@
 import express from 'express';
+import rateLimit from 'express-rate-limit';
 import activitiesRouter from './routes/activities';
 import leaderboardRouter from './routes/leaderboard';
 import teamsRouter from './routes/teams';
@@ -7,7 +8,15 @@ import workoutsRouter from './routes/workouts';
 
 const app = express();
 
+const apiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  limit: 100,
+  standardHeaders: 'draft-8',
+  legacyHeaders: false,
+});
+
 app.use(express.json());
+app.use('/api', apiLimiter);
 
 app.get('/api/health', (_req, res) => {
   res.json({
