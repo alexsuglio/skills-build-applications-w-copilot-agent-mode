@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './index.css'
 import App from './App.jsx'
 
+// VITE_CODESPACE_NAME must be defined in .env.local for Codespaces support
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />
