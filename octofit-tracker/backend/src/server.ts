@@ -8,6 +8,7 @@ const baseUrl = codespaceName
   ? `https://${codespaceName}-8000.app.github.dev`
   : `http://localhost:${port}`;
 
+// Start the OctoFit API server
 export async function startServer(): Promise<void> {
   await connectToDatabase();
 
